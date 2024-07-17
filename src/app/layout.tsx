@@ -18,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isAdmin: boolean = true;
+  const isAdmin: boolean = false;
   return (
     // <StoreProvider>
     <html lang="en">

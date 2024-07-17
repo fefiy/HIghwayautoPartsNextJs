@@ -25,12 +25,23 @@ export interface FormData{
    category_id: z.number().optional(),
    model_id: z.number().optional(),
  });
-//  export const ItemSchema = z.object({
-//     part_number: z.string(),
-//     unit_price: z.number(),
-//     quantity: z.number().optional(),
-//     model_id: z.number(),
-//     brand_id: z.number(),
-//     imgUrl: z.array(z.string().nonempty()),
-//     description: z.string()
-//   });
+
+
+ export const newUserSchema = z.object({
+ phone_number: z
+ .string()
+ .optional()
+ .refine(
+   (value) => {
+     if (value) {
+       return /^09\d{8}$/.test(value);
+     }
+     return true;
+   },
+   {
+     message: "Phone number must be in the format 09xxxxxxxx.",
+   }
+ ),
+ name:z.string(),
+ pasword:z.string(),
+ })
